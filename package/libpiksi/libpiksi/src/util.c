@@ -17,6 +17,19 @@
 #define SBP_SENDER_ID_FILE_PATH "/cfg/sbp_sender_id"
 #define DEVICE_UUID_FILE_PATH   "/cfg/device_uuid"
 
+#define DURO_EEPROM_PATH "/sys/devices/soc0/amba/e0005000.i2c/i2c-1/1-0050/eeprom"
+
+static bool board_is_duro(void)
+{
+  int fd = open(DURO_EEPROM_PATH, O_RDONLY);
+  if (fd < 0)
+    return false;
+  char buf[6];
+  read(fd, buf, 6);
+  close(fd);
+  return memcmp(buf, "DURO", 4) == 0;
+}
+
 static int file_read_string(const char *filename, char *str, size_t str_size)
 {
   FILE *fp = fopen(filename, "r");

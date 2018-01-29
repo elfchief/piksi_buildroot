@@ -25,6 +25,13 @@
 #include <libpiksi/common.h>
 
 /**
+ * @brief   Determine whether the current board is a Duro.
+ *
+ * @return       True if Duro, False if not 
+ */
+
+bool board_is_a_duro(void);
+/**
  * @brief   Get the SBP sender ID for the system.
  * @details Returns the board-specific SBP sender ID.
  *
