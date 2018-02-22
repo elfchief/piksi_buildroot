@@ -1,6 +1,6 @@
 #!/bin/sh
 
-name="usb_upgrade"
+name="copy_sys_logs"
 cmd="/etc/init.d/copy_sys_logs.sh"
 dir="/"
 user=""
